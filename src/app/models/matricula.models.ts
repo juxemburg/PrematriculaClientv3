@@ -22,10 +22,8 @@ export class Materia {
         }
     }
     export class Estudiante {
-        public NombreCompleto = '';
         constructor(public id: string, public nombres: string,
             public apellidos: string, public codigos: string[],
-            public programas: Programa[]) {
-            this.NombreCompleto = `${this.nombres} ${this.apellidos}`;
-        }
+            public programas: Programa[]) {}
+
     }

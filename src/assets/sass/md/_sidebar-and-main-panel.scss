@@ -16,6 +16,7 @@
     background-size: cover;
     background-position: center center;
 }
+
 .sidebar,
 .off-canvas-sidebar{
     position: fixed;
@@ -32,7 +33,7 @@
         overflow: auto;
         width: 260px;
         z-index: 4;
-        //background-color: $white-color;
+        // background-color: $white-color;
     }
     .logo-img{
         width: 30px;
@@ -65,27 +66,30 @@
 
 
 
-    .nav{
+    .nav, .separator {
         margin-top: 20px;
-
         li{
             > a{
                 margin: 10px 15px;
                 border-radius: $border-radius-base;
-                color: $black-color;
+                color: $blue-grey-50;
                 @extend .animation-transition-general;
             }
 
             &:hover > a{
                 background: rgba(200, 200, 200, 0.2);
-                color: $black-color;
+                color: $blue-grey-50;
             }
 
             &.active > a{
-                color: #FFFFFF;
+                color: $grey-900;
 
                 i{
-                    color: #FFFFFF;
+                    color: $grey-900;
+                }
+                p {
+                    color: $grey-900;
+                    font-weight: 600;
                 }
             }
         }
@@ -94,7 +98,7 @@
             margin: 0;
             line-height: 30px;
             font-size: 14px;
-            // font-weight: 600;
+            font-weight: 400;
             // text-transform: uppercase;
         }
 
@@ -127,8 +131,8 @@
             height: 100%;
             content: "";
             display: block;
-            background: #FFFFFF;
-            opacity: .93;
+            // background: #FFFFFF;
+            // opacity: .93;
         }
     }
 
@@ -197,7 +201,7 @@
     }
 
     &:before{
-        opacity: .33;
+        // opacity: .33;
         // background: #000000;
     }
 
@@ -209,7 +213,8 @@
 
     &[data-image]:after,
     &.has-image:after{
-        opacity: .77;
+        opacity: .80;
+        background-color: $red-A700;
     }
 
     &[data-color="blue"]{
@@ -222,12 +227,13 @@
         @include set-background-color-button($brand-warning);
     }
     &[data-color="red"]{
-        @include set-background-color-button($brand-danger);
+        @include set-background-color-button($grey-300);
     }
     &[data-color="purple"]{
         @include set-background-color-button($brand-primary);
     }
 }
+
 
 .off-canvas-sidebar{
     .nav {
@@ -244,9 +250,9 @@
 
 
 .main-panel{
-    //background: rgba(203,203,210,.15);
+    background: rgba(203,203,210,.15);
     position: relative;
-    // z-index: 2;
+    z-index: 2;
     float: right;
     min-height: 100%;
     width: $sidebar-width;

@@ -11,13 +11,15 @@ declare interface RouteInfo {
     icon: string;
     class: string;
 }
+
+
 export const ROUTES: RouteInfo[] = [
-    { path: 'user-profile', title: 'User Profile', icon: 'person', class: '' },
-    { path: 'table-list', title: 'Table List', icon: 'content_paste', class: '' },
-    { path: 'typography', title: 'Typography', icon: 'library_books', class: '' },
-    { path: 'icons', title: 'Icons', icon: 'bubble_chart', class: '' },
-    { path: 'notifications', title: 'Notifications', icon: 'notifications', class: '' },
-    { path: 'upgrade', title: 'Upgrade to PRO', icon: 'unarchive', class: 'active-pro' },
+    {
+        path: `welcome`,
+        title: `inicio`,
+        icon: `star`,
+        class: ''
+    }
 ];
 
 @Component({
@@ -27,6 +29,7 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
     menuItems: any[];
+    nombreEstudiante: string;
     private _est: Estudiante;
     private _programas: Programa[] = [];
 
@@ -39,18 +42,31 @@ export class SidebarComponent implements OnInit {
     }
     private loadInfo() {
         this._est = this._usrService.GetUser();
+        this.nombreEstudiante =
+            `${this._est.nombres} ${this._est.apellidos}`;
         this._programas = this._est.programas;
         const wizardItems: RouteInfo[] = [];
         for (const prog of this._programas) {
             wizardItems.push({
-                path: `wizard/${this._est.id}/${prog.id}`,
-                title: `Prematricula ${prog.nombre}`,
+                path: `wizard/${prog.codigo}/${prog.id}`,
+                title: `Prematricula`,
                 icon: `${prog.iniciales}`,
                 class: ''
             });
+            wizardItems.push({
+                path: `curriculum/${prog.codigo}`,
+                title: `Historia Académica`,
+                icon: `dashboard`,
+                class: ''
+            });
+            wizardItems.push({
+                path: `history/${prog.codigo}`,
+                title: `Pensum`,
+                icon: `trending_up`,
+                class: ''
+            });
         }
-        this.menuItems = wizardItems
-            .concat(ROUTES.filter(menuItem => menuItem));
+        this.menuItems = wizardItems.filter(menuItem => menuItem);
     }
     isMobileMenu() {
         if ($(window).width() > 991) {
@@ -58,4 +74,9 @@ export class SidebarComponent implements OnInit {
         }
         return true;
     };
+
+    logout() {
+        this._usrService.RemoveUser();
+        this._router.navigate(['/login']);
+    }
 }

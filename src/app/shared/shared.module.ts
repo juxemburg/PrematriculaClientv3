@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingComponent } from './loading/loading.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpService } from 'app/shared/services/http.service';
@@ -18,7 +19,7 @@ import { ErrorComponent } from './error/error.component';
     FormsModule,
     ReactiveFormsModule,
     FooterComponent,
-    // BrowserAnimationsModule,
+    BrowserAnimationsModule,
     LoadingComponent,
     BrowserModule,
     LoadingComponent,

@@ -1,7 +1,195 @@
 <div class="main-content">
-  <div class="container-fluid">
-    <div class="row">
-      <p>Wizard Works!!</p>
-    </div>
-  </div>
+    <div class="container-fluid">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="wizard-container">
+            <div class="card wizard-card" data-color="red" id="wizard"
+            *ngIf="!datafull">
+              <form action="" method="" novalidate="validate">
+                <!--You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"-->
+                <div class="wizard-header">
+                  <h3 class="wizard-title">
+                    Realiza tu prematrícula
+                  </h3>
+                  <h5>Por favor, regálanos la siguiente información.</h5>
+                </div>
+                <div class="wizard-navigation">
+                  <ul class="nav nav-pills">
+                    <li class="active" style="width: 33.3333%;">
+                      <a href="#details" data-toggle="tab" aria-expanded="true">1. Selecciona tus materias</a>
+                    </li>
+                    <li class="" style="width: 33.3333%;">
+                      <a href="#captain" data-toggle="tab" aria-expanded="false">2. Ingresa tus electivas y FISH</a>
+                    </li>
+                    <li class="" style="width: 33.3333%;">
+                      <a href="#description" data-toggle="tab" aria-expanded="false">3. Verifica tus datos</a>
+                    </li>
+                  </ul>
+                  <div class="moving-tab" style="width: 250px; transform: translate3d(-8px, 0px, 0px); transition: transform 0s;">1. Inicio</div>
+                </div>
+      
+                <div class="tab-content">
+                  <div class="tab-pane active" id="details">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h4 class="info-text"> Selecciona las materias que planeas ver el siguiente semestre</h4>
+                      </div>
+                      <div class="col-sm-7">
+                        <h5 class="title text-center">
+                          Tus materias
+                        </h5>
+                        <app-loading *ngIf="_isLoading"></app-loading>
+                        <div aria-multiselectable="true" class="panel-group" id="accordion" role="tablist" *ngIf="_materias">
+                          <div class="panel panel-default" *ngFor="let grp of _materias">
+                            <div class="panel-heading" id="headingOne" role="tab">
+                              <a aria-controls="headingOne" aria-expanded="false" data-parent="#accordion" data-toggle="collapse" href="#grp-{{grp.numSemestre}}"
+                                role="button" class="collapsed">
+                                <h4 class="panel-title">
+                                  {{grp.numSemestre}} Semeste
+                                  <i class="material-icons">keyboard_arrow_down</i>
+                                </h4>
+                              </a>
+                            </div>
+                            <div aria-labelledby="headingOne" class="panel-collapse collapse" id="grp-{{grp.numSemestre}}" role="tabpanel" aria-expanded="false"
+                              style="height: 0px;">
+                              <div class="panel-body">
+                                <div *ngFor="let mat of grp.materias">
+                                  <div class="col-md-6">
+                                    <app-matricula-materia [materia]="mat" (onMateriaSelected)="onMateriaSelected($event)">
+                                    </app-matricula-materia>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+      
+                        </div>
+                      </div>
+                      <div class="col-sm-5">
+                        <h5 class="title text-center">
+                          Tu prematrícula
+                        </h5>
+                        <div class="col-sm-12 text-center" *ngIf="_selectedMaterias">
+                          <div *ngFor="let key of getKeys(_selectedMaterias)">
+                            <button class="btn btn-wd btn-danger" [@startAnimation]='in'
+                            (click)="onMateriaUnselected(_selectedMaterias[key])">
+                              {{_selectedMaterias[key].nombre}}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="captain">
+                    <div class="row">
+                      <div class="col-sm-6 col-lg-5 col-lg-offset-1">
+                        <div class="form-group">
+                          <label class="control-label label-select">
+                            ¿Cuántas electivas piensas matricular el próximo semestre?
+                          </label>
+                          <select class=" btn btn-white btn-round" (change)='onSelectChanged($event, "numElectivas")'>
+                            <option value="0">No pienso ver electivas</option>
+                            <option value="1">1 Electiva</option>
+                            <option value="2">2 Electivas</option>
+                            <option value="3">3 Electivas</option>
+                            <option value="4">Más de 3 Electivas</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label label-select">
+                            ¿Cuántas electivas FISH piensas ver el próximo semestre?
+                          </label>
+                          <select class=" btn btn-white btn-round" (change)='onSelectChanged($event, "numFish")'>
+                            <option value="0">No pienso matricular FISH</option>
+                            <option value="1">1 FISH</option>
+                            <option value="2">2 FISH</option>
+                            <option value="3">3 FISH</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-lg-5">
+                        <div class="form-group">
+                          <label class="control-label label-select">
+                            ¿Tienes pensado matricular ética el próximo semestre?
+                          </label>
+                          <select class=" btn btn-white btn-round" (change)='onSelectChanged($event, "etica")'>
+                            <option value="false">No</option>
+                            <option value="true">Sí</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label label-select">
+                            ¿Tienes pensado matricular Actividad Física Formativa?
+                          </label>
+                          <select class=" btn btn-white btn-round" (change)='onSelectChanged($event, "aff")'>
+                            <option value="false">No</option>
+                            <option value="true">Sí</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="description">
+                    <div class="row">
+                      <div class="col-sm-12 col-lg-10 col-lg-offset-1">
+                        <div class="card card-plain">
+                          <div class="card-header card-header-icon" data-background-color="rose">
+                            <i class="material-icons">assignment</i>
+                          </div>
+                          <div class="card-content">
+                            <h4 class="card-title">Tu Matrícula</h4>
+                            <app-loading *ngIf="sendingData">
+                            </app-loading>
+                            <div *ngIf="!sendingData">
+                              <div class="content table-responsive">
+                                <table class="table">
+                                  <thead class="text-primary">
+                                    <tr>
+                                      <th>Semestre</th>
+                                      <th class="text-center">Materia</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let key of getKeys(_selectedMaterias)">
+                                      <td class="text-center">{{_selectedMaterias[key].numSemestre}}</td>
+                                      <td class="text-center">{{_selectedMaterias[key].nombre}}</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="wizard-footer">
+                  <div class="pull-right">
+                    <input type="button" class="btn btn-next btn-fill btn-danger btn-wd" name="next" value="Siguiente"
+                    [disabled] ="!ValidMatricula()">
+                    <input type="submit" class="btn btn-finish btn-fill btn-danger btn-wd" name="finish" value="Terminar" style="display: none;"
+                      (click)="SendMatricula()">
+                  </div>
+                  <div class="pull-left">
+                    <input type="button" class="btn btn-previous btn-fill btn-default btn-wd disabled" name="previous" value="Atrás">
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </form>
+            </div>
+            <div class="card" *ngIf="datafull">
+              <div class="card-content">
+                Prematricula realizada con éxito!
+                <h3 class="title">
+                  <i class="material-icons">done</i>
+                </h3>
+                <button class="btn btn-round btn-danger"
+                (click)="redoMatricula()">
+                  Realizar otra vez
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>    
 </div>

@@ -29,6 +29,8 @@
           "../node_modules/bootstrap/dist/js/bootstrap.js",
           "../node_modules/bootstrap-material-design/dist/js/ripples.min.js",
           "../node_modules/bootstrap-material-design/dist/js/material.min.js",
+          "assets/js/bootstrap-wizard.min.js",
+          "assets/js/material-bootstrap-wizard.js",
           "../node_modules/arrive/src/arrive.js",
           "../node_modules/moment/moment.js",
           "../node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js",

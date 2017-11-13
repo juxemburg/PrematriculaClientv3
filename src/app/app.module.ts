@@ -22,6 +22,7 @@ import { AccountModule } from 'app/account/account.module';
 import { SharedModule } from 'app/shared/shared.module';
 import { MatriculaService } from 'app/services/matricula.service';
 import { MateriaService } from 'app/services/materia.service';
+import { MatriculaMateriaComponent } from './matricula-materia/matricula-materia.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MateriaService } from 'app/services/materia.service';
     NotificationsComponent,
     UpgradeComponent,
     MatriculaWizardComponent,
-    MainComponent
+    MainComponent,
+    MatriculaMateriaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,59 @@
+<div class="wrapper wrapper-full-page login-page">
+    <div class="full-page login-page" filter-color="black">
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
+              <h4 class="text-white text-center">
+                <img src="assets/img/brand.png" alt="">
+                <span class="vline"></span> Sistema de Prematrícula
+              </h4>
+            </div>
+            <div class=" col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3 margin-top-30">
+              <form [formGroup]="_loginForm" (ngSubmit)='do_login(_loginForm.value)' class="ng-untouched ng-pristine ng-valid" _lpchecked="1">
+                <div class="card card-login">
+                  <div class="card-header text-center" data-background-color="rose">
+                    <h4 class="card-title">
+                      <i class="material-icons">account_circle</i>
+                      Iniciar Sesión
+                    </h4>
+                  </div>
+                  <div class="card-content">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="material-icons">face</i>
+                      </span>
+                      <div class="form-group label-floating is-empty">
+                        <label class="control-label">Usuario</label>
+                        <input formControlName="user" class="form-control" type="text" autocomplete="off">
+                        <span *ngIf="!_loginForm.controls['user'].valid 
+                          && _loginForm.controls['user'].touched" class="text-danger">
+                          Campo obligatorio
+                        </span>
+                      </div>
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
+                      <div class="form-group label-floating is-empty">
+                        <label class="control-label">Contraseña</label>
+                        <input formControlName="password" class="form-control" type="password" autocomplete="off">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer text-center">
+                    <button [disabled]="!_loginForm.valid" class="btn btn-rose" type="submit">
+                      Ingresar
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- <app-footer></app-footer> -->
+      </div>
+      <div class="full-page-background" style="background-image: url('assets/img/full-screen-image-login.jpg') "></div>
+    </div>
+  </div>

@@ -14,9 +14,14 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
-import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
+import { MatriculaWizardComponent } from './matricula-wizard/matricula-wizard.component';
+import { MainComponent } from './main/main.component';
+import { AccountModule } from 'app/account/account.module';
+import { SharedModule } from 'app/shared/shared.module';
+import { MatriculaService } from 'app/services/matricula.service';
+import { MateriaService } from 'app/services/materia.service';
 
 @NgModule({
   declarations: [
@@ -26,20 +31,22 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
     TableListComponent,
     TypographyComponent,
     IconsComponent,
-    MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-
+    MatriculaWizardComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    SharedModule,
     ComponentsModule,
-RouterModule,
+    AccountModule,
+    RouterModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [MatriculaService, MateriaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

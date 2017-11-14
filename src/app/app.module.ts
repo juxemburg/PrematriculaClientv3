@@ -26,6 +26,8 @@ import { MatriculaMateriaComponent } from './matricula-materia/matricula-materia
 import { PrematriculaDirective } from './directives/prematricula.directive';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ProgramaService } from 'app/services/programa.service';
+import { PrematriculaGuardService } from 'app/prematricula-guard.service';
+import { DashboardGuardService } from 'app/dashboard-guard.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { ProgramaService } from 'app/services/programa.service';
     RouterModule,
     AppRoutingModule
   ],
-  providers: [MatriculaService, MateriaService, ProgramaService],
+  providers: [MatriculaService, MateriaService,
+    ProgramaService, PrematriculaGuardService,
+    DashboardGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,13 +15,21 @@ import { LoginComponent } from 'app/account/login/login.component';
 import { MainComponent } from 'app/main/main.component';
 import { ErrorComponent } from 'app/shared/error/error.component';
 import { WelcomeComponent } from 'app/welcome/welcome.component';
+import { PrematriculaGuardService } from 'app/prematricula-guard.service';
+import { DashboardGuardService } from 'app/dashboard-guard.service';
 
 const routes: Routes = [
   {
-    path: 'dashboard', component: MainComponent,
+    path: 'dashboard',
+    canActivate: [DashboardGuardService],
+    component: MainComponent,
     children: [
       { path: 'index', component: DashboardComponent },
-      { path: 'wizard/:idEst/:idProg', component: MatriculaWizardComponent },
+      {
+        path: 'wizard/:idEst/:idProg',
+        canActivate: [PrematriculaGuardService],
+        component: MatriculaWizardComponent
+      },
       { path: 'user-profile', component: UserProfileComponent },
       { path: 'table-list', component: TableListComponent },
       { path: 'typography', component: TypographyComponent },

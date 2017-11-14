@@ -1,0 +1,7 @@
+.btn-wd {
+    min-width: 140px;
+    margin-bottom:4px;
+    word-wrap:break-word;
+    white-space:normal;
+    max-width:180px;
+  }

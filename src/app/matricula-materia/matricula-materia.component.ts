@@ -23,7 +23,7 @@ export class MatriculaMateriaComponent implements OnInit {
 
   ngOnInit() {
     this._active = false;
-    this.btn_class = 'btn btn-round btn-raised btn-white';
+    this.btn_class = 'btn btn-wd btn-round btn-raised btn-white';
   }
 
   onClickEvent() {
@@ -41,7 +41,7 @@ export class MatriculaMateriaComponent implements OnInit {
     this.onMateriaSelected.emit(res);
   }
   setClass() {
-    this.btn_class = (this._active) ? 'btn btn-round btn-raised btn-info' : 'btn btn-round btn-raised btn-white';
+    this.btn_class = (this._active) ? 'btn btn-round btn-raised btn-info btn-wd' : 'btn btn-round btn-raised btn-white btn-wd';
   }
 
 }

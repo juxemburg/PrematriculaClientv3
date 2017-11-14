@@ -109,7 +109,7 @@
             line-height: 30px;
             width: 30px;
             text-align: center;
-            color: #a9afbb;
+            color:$grey-50;
         }
     }
 
@@ -227,7 +227,7 @@
         @include set-background-color-button($brand-warning);
     }
     &[data-color="red"]{
-        @include set-background-color-button($grey-300);
+        @include set-background-color-button($grey-50);
     }
     &[data-color="purple"]{
         @include set-background-color-button($brand-primary);

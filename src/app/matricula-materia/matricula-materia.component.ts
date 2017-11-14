@@ -41,7 +41,7 @@ export class MatriculaMateriaComponent implements OnInit {
     this.onMateriaSelected.emit(res);
   }
   setClass() {
-    this.btn_class = (this._active) ? 'btn btn-round btn-raised btn-primary' : 'btn btn-round btn-raised btn-white';
+    this.btn_class = (this._active) ? 'btn btn-round btn-raised btn-info' : 'btn btn-round btn-raised btn-white';
   }
 
 }

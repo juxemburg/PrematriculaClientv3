@@ -41,7 +41,7 @@ import { ProgramaService } from 'app/services/programa.service';
     MainComponent,
     MatriculaMateriaComponent,
     PrematriculaDirective,
-    WelcomeComponent
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,

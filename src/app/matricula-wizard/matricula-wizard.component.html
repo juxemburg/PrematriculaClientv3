@@ -1,3 +1,4 @@
+
 <div class="main-content">
     <div class="container-fluid">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -176,15 +177,14 @@
                   <div class="clearfix"></div>
                 </div>
               </form>
-              <script>
-                $.wizardInit();
-              </script>
             </div>
-            <div class="card" *ngIf="datafull">
+            <div class="card text-center" *ngIf="datafull">
               <div class="card-content">
-                Prematricula realizada con éxito!
+                <h3>
+                  Prematricula realizada con éxito!                  
+                </h3>
                 <h3 class="title">
-                  <i class="material-icons">done</i>
+                  <i class="material-icons md-48">check</i>
                 </h3>
                 <button class="btn btn-round btn-danger"
                 (click)="redoMatricula()">

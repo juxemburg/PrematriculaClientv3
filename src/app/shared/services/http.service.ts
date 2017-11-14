@@ -6,8 +6,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class HttpService {
 
-  private _baseUrl = 'http://localhost:8080/unicauca-prematricula/api';
-  // private _baseUrl = 'https://94953266-40c4-4521-a736-53ea63e12758.mock.pstmn.io/unicacua-prematricula/api';
+  //private _baseUrl = 'http://localhost:8080/unicauca-prematricula/api';
+  private _baseUrl = 'https://94953266-40c4-4521-a736-53ea63e12758.mock.pstmn.io/unicacua-prematricula/api';
   constructor(private _http: Http) { }
 
   public Get<T>(subUrl: string): Observable<T> {

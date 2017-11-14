@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { trigger, style, state, animate, transition } from '@angular/animations';
 import { Prematricula, Materia, MateriaGroup } from 'app/models/matricula.models';
 import { ActivatedRoute } from '@angular/router';
@@ -32,7 +32,7 @@ declare const $: any;
   ]
 })
 export class MatriculaWizardComponent implements OnInit, AfterViewInit {
-
+  
   private _estudianteId: string;
   private _programaId: string;
   public _materias: MateriaGroup[];
@@ -69,6 +69,8 @@ export class MatriculaWizardComponent implements OnInit, AfterViewInit {
     $.wizardInit();
   }
 
+
+
   onMateriaSelected(info: any) {
     this.selectMateria(info.result as Materia, info.value,
       info.callback);
@@ -79,7 +81,7 @@ export class MatriculaWizardComponent implements OnInit, AfterViewInit {
   }
 
   onSelectChanged(event: any, type: string) {
-    let value = event.target.value;
+    const value = event.target.value;
     switch (type) {
       case 'numElectivas':
         this.numElectivas = parseInt(value);
@@ -144,6 +146,7 @@ export class MatriculaWizardComponent implements OnInit, AfterViewInit {
 
   public redoMatricula(): void {
     this.datafull = false;
+    setTimeout(() => $.wizardInit(), 150);
   }
 
   public SendMatricula(): void {

@@ -22,13 +22,6 @@ var currentIndex = 0;
 
 $.wizardInit = () => {
 
-    alert('wizard started');
-    debugger;
-
-    /*  Activate the tooltips      */
-    $('[rel="tooltip"]').tooltip();
-
-
     // Wizard Initialization
     $('.wizard-card').bootstrapWizard({
         'tabClass': 'nav nav-pills',
@@ -50,7 +43,7 @@ $.wizardInit = () => {
 
             $first_li = navigation.find('li:first-child a').html();
             $moving_div = $('<div class="moving-tab">' + $first_li + '</div>');
-            $('.wizard-card .wizard-navigation').append($moving_div);
+            // $('.wizard-card .wizard-navigation').append($moving_div);
 
             refreshAnimation($wizard, index);
 
@@ -58,13 +51,7 @@ $.wizardInit = () => {
         },
 
         onTabClick: function (tab, navigation, index) {
-            var $valid = $('.wizard-card form').valid();
-
-            if (!$valid) {
-                return false;
-            } else {
-                return true;
-            }
+            return false;
         },
 
         onTabShow: function (tab, navigation, index) {
@@ -84,8 +71,11 @@ $.wizardInit = () => {
 
             button_text = navigation.find('li:nth-child(' + $current + ') a').html();
 
+            
+
             setTimeout(function () {
                 $('.moving-tab').text(button_text);
+
             }, 150);
 
             var checkbox = $('.footer-checkbox');
@@ -130,9 +120,7 @@ $.wizardInit = () => {
             $(this).find('[type="checkbox"]').attr('checked', 'true');
         }
     });
-
     $('.set-full-height').css('height', 'auto');
-
 };
 
 

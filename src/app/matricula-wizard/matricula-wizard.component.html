@@ -24,7 +24,7 @@
                       <a href="#description" data-toggle="tab" aria-expanded="false">3. Verifica tus datos</a>
                     </li>
                   </ul>
-                  <div class="moving-tab" style="width: 250px; transform: translate3d(-8px, 0px, 0px); transition: transform 0s;">1. Inicio</div>
+                  <div class="moving-tab" style="width: 250px; transform: translate3d(-8px, 0px, 0px); transition: transform 0s;"></div>
                 </div>
       
                 <div class="tab-content">
@@ -176,6 +176,9 @@
                   <div class="clearfix"></div>
                 </div>
               </form>
+              <script>
+                $.wizardInit();
+              </script>
             </div>
             <div class="card" *ngIf="datafull">
               <div class="card-content">

@@ -153,7 +153,7 @@ $(window).resize(function () {
 
 function refreshAnimation($wizard, index) {
     $total = $wizard.find('.nav li').length;
-    $li_width = 100 / $total;
+    $li_width = (100 / $total);
 
     total_steps = $wizard.find('.nav li').length;
     move_distance = $wizard.width() / total_steps;
@@ -190,7 +190,6 @@ function refreshAnimation($wizard, index) {
     $('.moving-tab').css({
         'transform': 'translate3d(' + move_distance + 'px, ' + vertical_level + 'px, 0)',
         'transition': 'all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1)'
-
     });
 }
 

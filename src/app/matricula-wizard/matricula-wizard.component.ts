@@ -32,7 +32,6 @@ declare const $: any;
   ]
 })
 export class MatriculaWizardComponent implements OnInit, AfterViewInit {
-  
   private _estudianteId: string;
   private _programaId: string;
   public _materias: MateriaGroup[];
@@ -121,8 +120,12 @@ export class MatriculaWizardComponent implements OnInit, AfterViewInit {
       this._programaId)
       .subscribe(data => {
         this._prematricula = data;
+        this._prematricula.fecha = new Date(data.fecha);
         this.datafull = this._prematricula.diligenciada;
+        console.log('Prematricula loaded');
         console.log(data);
+        console.log('date: ');
+        console.log(this._prematricula.fecha);
       }, err => {
         console.log('error loading data: ' + err);
       });

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   private _model: LoginModel;
   public _loginForm: FormGroup;
   private _post: any;
+  public isLoading = false;
   constructor(private _loginService: LoginService,
     private _fb: FormBuilder, private _router: Router) { }
   ngOnInit() {
@@ -33,21 +34,24 @@ export class LoginComponent implements OnInit {
   do_login(data: any) {
     this._model.usuario = data.user.toLowerCase();
     this._model.contrasena = data.password;
+    this.isLoading = true;
     this._loginService.Login(this._model)
       .subscribe(data => {
         this._router.navigate(['/dashboard']);
+        this.isLoading = false;
       },
       error => {
-        console.log(error);
-        this.showNotification('top', 'right', `${error.statusText}:
+        this._loginForm.reset();
+        this.showNotification('top', 'right', `${error.statusText}
         Nombre de usario y/o contraseña erroneos`);
+        this.isLoading = false;
       });
   }
 
   showNotification(from, align, info, color = 'danger') {
     $.notify({
       icon: '<div class="container"><div class="row">notification</div></div>',
-      title: 'Error',
+      title: 'Error: ',
       message: info
 
     }, {

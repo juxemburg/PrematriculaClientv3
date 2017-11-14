@@ -14,6 +14,7 @@ import { MatriculaWizardComponent } from 'app/matricula-wizard/matricula-wizard.
 import { LoginComponent } from 'app/account/login/login.component';
 import { MainComponent } from 'app/main/main.component';
 import { ErrorComponent } from 'app/shared/error/error.component';
+import { WelcomeComponent } from 'app/welcome/welcome.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,8 @@ const routes: Routes = [
       { path: 'typography', component: TypographyComponent },
       { path: 'icons', component: IconsComponent },
       { path: 'notifications', component: NotificationsComponent },
+      { path: 'login', component: WelcomeComponent },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'upgrade', component: UpgradeComponent },
     ]
   },

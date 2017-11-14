@@ -24,6 +24,8 @@ import { MatriculaService } from 'app/services/matricula.service';
 import { MateriaService } from 'app/services/materia.service';
 import { MatriculaMateriaComponent } from './matricula-materia/matricula-materia.component';
 import { PrematriculaDirective } from './directives/prematricula.directive';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { ProgramaService } from 'app/services/programa.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { PrematriculaDirective } from './directives/prematricula.directive';
     MatriculaWizardComponent,
     MainComponent,
     MatriculaMateriaComponent,
-    PrematriculaDirective
+    PrematriculaDirective,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ import { PrematriculaDirective } from './directives/prematricula.directive';
     RouterModule,
     AppRoutingModule
   ],
-  providers: [MatriculaService, MateriaService],
+  providers: [MatriculaService, MateriaService, ProgramaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

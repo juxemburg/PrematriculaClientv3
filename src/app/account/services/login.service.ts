@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 
-import { Estudiante } from 'app/models/matricula.models';
+import { Estudiante, Coordinador } from 'app/models/matricula.models';
 
 import { LoginModel } from 'app/models/login.models';
 import { HttpService } from 'app/shared/services/http.service';
@@ -18,10 +18,13 @@ export class LoginService {
     return this._service
       .Post<Estudiante, LoginModel>('account/login', model)
       .do(res => {
-        console.log('recieved login:');
-        console.log(res);
         this._usrService.SetUser(res);
       });
+  }
+
+  public LoginAdmin(model: LoginModel): Observable<Coordinador> {
+    return this._service
+    .Post<Coordinador, LoginModel>('account/login/admin', model);
   }
 
 }

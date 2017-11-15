@@ -49,7 +49,7 @@ export class SidebarComponent implements OnInit {
         for (const prog of this._programas) {
             wizardItems.push({
                 path: `wizard/${prog.codigo}/${prog.id}`,
-                title: `Prematricula: ${prog.nombre}`,
+                title: `Prematricula: \n${prog.nombre}`,
                 icon: `${prog.iniciales}`,
                 class: ''
             });

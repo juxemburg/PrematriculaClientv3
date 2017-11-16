@@ -26,8 +26,8 @@ export class Estudiante {
         public apellidos: string, public codigos: string[],
         public programas: Programa[]) { }
 
-}
+    }
 export class Coordinador {
     constructor(public id: string, public nombres: string,
-        public apellidos: string, public idPrograma: string2) { }
+        public apellidos: string, public idPrograma: string) { }
 }

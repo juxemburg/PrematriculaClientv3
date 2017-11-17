@@ -7,6 +7,7 @@ import { UserService } from 'app/account/services/user.service';
 import { SharedModule } from 'app/shared/shared.module';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginComponent } from 'app/account/login/login.component';
+import { AdminService } from 'app/account/services/admin.service';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { LoginComponent } from 'app/account/login/login.component';
   providers: [
     LoginService,
     UserService,
+    AdminService,
     CookieService
   ]
 })

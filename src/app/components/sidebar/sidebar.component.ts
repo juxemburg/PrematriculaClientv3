@@ -56,7 +56,6 @@ export class SidebarComponent implements OnInit {
         ${this._admin.apellidos}`;
     }
     private loadUserInfo(): void {
-        debugger;
         this._est = this._usrService.GetUser();
         this.nombreEstudiante =
             `${this._est.nombres} ${this._est.apellidos}`;

@@ -41,7 +41,7 @@ export class LoginAdminComponent implements OnInit {
     this.isLoading = true;
     this._loginService.LoginAdmin(this.model)
       .subscribe(data => {
-        this._router.navigate(['/dashboard']);
+        this._router.navigate(['/dashboard/admin']);
         this.isLoading = false;
       },
       error => {

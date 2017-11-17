@@ -18,6 +18,7 @@ import { WelcomeComponent } from 'app/welcome/welcome.component';
 import { PrematriculaGuardService } from 'app/prematricula-guard.service';
 import { DashboardGuardService } from 'app/dashboard-guard.service';
 import { LoginAdminComponent } from 'app/account/login-admin/login-admin.component';
+import { DashboardAdminComponent } from 'app/dashboard-admin/dashboard-admin.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,7 @@ const routes: Routes = [
         canActivate: [PrematriculaGuardService],
         component: MatriculaWizardComponent
       },
+      { path: 'admin', component: DashboardAdminComponent },
       { path: 'user-profile', component: UserProfileComponent },
       { path: 'table-list', component: TableListComponent },
       { path: 'typography', component: TypographyComponent },

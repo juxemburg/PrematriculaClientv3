@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Programa, Estudiante } from 'app/models/matricula.models';
+import { Programa, Estudiante, Coordinador } from 'app/models/matricula.models';
 import { Router } from '@angular/router';
 import { UserService } from 'app/account/services/user.service';
 import { MatriculaService } from 'app/services/matricula.service';
+import { AdminService } from 'app/account/services/admin.service';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -31,16 +32,31 @@ export class SidebarComponent implements OnInit {
     menuItems: any[];
     nombreEstudiante: string;
     private _est: Estudiante;
+    private _admin: Coordinador;
     private _programas: Programa[] = [];
 
     constructor(private _ctrlService: MatriculaService,
         private _usrService: UserService,
+        private _adminService: AdminService,
         private _router: Router) { }
 
     ngOnInit() {
-        this.loadInfo();
+        if (this.isUserAble()) {
+            this.loadUserInfo();
+        } else {
+            this.loadAdminInfo();
+        }
     }
-    private loadInfo() {
+    private isUserAble(): boolean {
+        return typeof this._adminService.GetUser() === 'undefined';
+    }
+    private loadAdminInfo(): void {
+        this._admin = this._adminService.GetUser();
+        this.nombreEstudiante = `${this._admin.nombres} 
+        ${this._admin.apellidos}`;
+    }
+    private loadUserInfo(): void {
+        debugger;
         this._est = this._usrService.GetUser();
         this.nombreEstudiante =
             `${this._est.nombres} ${this._est.apellidos}`;

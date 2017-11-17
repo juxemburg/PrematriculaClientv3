@@ -28,6 +28,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ProgramaService } from 'app/services/programa.service';
 import { PrematriculaGuardService } from 'app/prematricula-guard.service';
 import { DashboardGuardService } from 'app/dashboard-guard.service';
+import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { DashboardGuardService } from 'app/dashboard-guard.service';
     MatriculaMateriaComponent,
     PrematriculaDirective,
     WelcomeComponent,
+    DashboardAdminComponent,
   ],
   imports: [
     BrowserModule,

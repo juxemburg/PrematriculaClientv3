@@ -26,7 +26,7 @@ export class LoginService {
 
   public LoginAdmin(model: LoginModel): Observable<Coordinador> {
     return this._service
-      .Post<Coordinador, LoginModel>('account/login/admin', model)
+      .Post<Coordinador, LoginModel>('account/admin/login', model)
       .do(res => {
         this._adminService.SetUser(res);
       });

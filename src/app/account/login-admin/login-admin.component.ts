@@ -3,6 +3,7 @@ import { LoginModel } from 'app/models/login.models';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from 'app/account/services/login.service';
 import { Router } from '@angular/router';
+import { NotificationService } from 'app/shared/services/notification.service';
 
 
 declare const $: any;
@@ -19,7 +20,8 @@ export class LoginAdminComponent implements OnInit {
   public isLoading = false;
 
   constructor(private _loginService: LoginService,
-    private _formBuilder: FormBuilder, private _router: Router) { }
+    private _formBuilder: FormBuilder, private _router: Router,
+    private _notificationService: NotificationService) { }
 
   ngOnInit() {
     $.material.init();
@@ -44,8 +46,8 @@ export class LoginAdminComponent implements OnInit {
       },
       error => {
         this.loginForm.reset();
-        this.showNotification('top', 'right', `${error.statusText}
-        Nombre de usario y/o contraseña erroneos`);
+        this._notificationService.showNotification('top', 'right',
+          `${error.statusText} Nombre de usario y/o contraseña erroneos`);
         this.isLoading = false;
       });
   }

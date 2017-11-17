@@ -1,0 +1,22 @@
+.vline {
+    border-right: 3px solid #FFF;
+    margin-right: 6px;
+}
+
+.login-page > .content, .lock-page > .content {
+    padding-top: 4vh;
+}
+
+.card-header {
+    max-width: 60% !important;
+    margin: auto;
+    background: linear-gradient(60deg, #d32f2f, #9a0007);
+    margin-bottom: -40px;
+    position: relative;
+    top: -40px;
+
+}
+
+.btn-rose {
+    background: linear-gradient(60deg, #d32f2f, #9a0007);
+}

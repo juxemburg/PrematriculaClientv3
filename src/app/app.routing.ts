@@ -17,6 +17,7 @@ import { ErrorComponent } from 'app/shared/error/error.component';
 import { WelcomeComponent } from 'app/welcome/welcome.component';
 import { PrematriculaGuardService } from 'app/prematricula-guard.service';
 import { DashboardGuardService } from 'app/dashboard-guard.service';
+import { LoginAdminComponent } from 'app/account/login-admin/login-admin.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,7 @@ const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginComponent },
+  { path: 'admin/login', component: LoginAdminComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: ErrorComponent, pathMatch: 'full' }
 ];

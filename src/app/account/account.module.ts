@@ -8,6 +8,7 @@ import { SharedModule } from 'app/shared/shared.module';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginComponent } from 'app/account/login/login.component';
 import { AdminService } from 'app/account/services/admin.service';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { AdminService } from 'app/account/services/admin.service';
     SharedModule
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    LoginAdminComponent
   ],
   exports: [],
   providers: [

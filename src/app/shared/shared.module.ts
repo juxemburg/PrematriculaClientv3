@@ -7,14 +7,15 @@ import { HttpService } from 'app/shared/services/http.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorComponent } from './error/error.component';
+import { NotificationService } from 'app/shared/services/notification.service';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [LoadingComponent, FooterComponent, ErrorComponent],
-  providers: [HttpService],
-  exports:[
+  providers: [HttpService, NotificationService],
+  exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

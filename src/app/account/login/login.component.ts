@@ -5,6 +5,7 @@ import { LoginModel } from 'app/models/login.models';
 
 import { Router } from '@angular/router';
 import { LoginService } from 'app/account/services/login.service';
+import { NotificationService } from 'app/shared/services/notification.service';
 
 declare const $: any;
 
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   private _post: any;
   public isLoading = false;
   constructor(private _loginService: LoginService,
-    private _fb: FormBuilder, private _router: Router) { }
+    private _fb: FormBuilder, private _router: Router,
+    private _notificationService: NotificationService) { }
   ngOnInit() {
     $.material.init();
     this._model = new LoginModel('', '');
@@ -42,25 +44,10 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this._loginForm.reset();
-        this.showNotification('top', 'right', `${error.statusText}
-        Nombre de usario y/o contraseña erroneos`);
+        this._notificationService.showNotification('top', 'right'
+          , `${error.statusText} 
+          Nombre de usario y/o contraseña erroneos`);
         this.isLoading = false;
-      });
-  }
-
-  showNotification(from, align, info, color = 'danger') {
-    $.notify({
-      icon: '<div class="container"><div class="row">notification</div></div>',
-      title: 'Error: ',
-      message: info
-
-    }, {
-        type: color,
-        timer: 4000,
-        placement: {
-          from: from,
-          align: align
-        }
       });
   }
 }

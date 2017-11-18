@@ -1635,6 +1635,12 @@
     }
   }
 
+  .btn-wd i.material-icons {
+    position: fixed;
+    right: 2px;
+    top: 2px;
+  }
+
   .panel .panel-heading {
     background-color: transparent;
     border-bottom: 1px solid #ddd;

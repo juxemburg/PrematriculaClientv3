@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatriculaService } from 'app/services/matricula.service';
 import { MateriaService } from 'app/services/materia.service';
 import { MatriculaUtil } from 'app/util/matricula-util';
+import { NotificationService } from 'app/shared/services/notification.service';
 
 declare const $: any;
 
@@ -51,7 +52,8 @@ export class MatriculaWizardComponent implements OnInit, AfterViewInit {
 
   constructor(private _route: ActivatedRoute,
     private _service: MatriculaService,
-    private _materiaService: MateriaService) {
+    private _materiaService: MateriaService,
+    private _notificationService: NotificationService) {
 
   }
 
@@ -152,6 +154,11 @@ export class MatriculaWizardComponent implements OnInit, AfterViewInit {
     setTimeout(() => $.wizardInit(), 150);
   }
 
+  public Next(): void {
+    debugger;
+    window.scrollTo(0, 0);
+  }
+
   public SendMatricula(): void {
     this.sendingData = true;
     const datosPrematricula =
@@ -163,12 +170,13 @@ export class MatriculaWizardComponent implements OnInit, AfterViewInit {
 
     this._materiaService.postPrematricula(datosPrematricula)
       .subscribe(data => {
-        console.log(datosPrematricula);
-        console.log('data sent');
         this.sendingData = false;
         this.datafull = true;
       }, err => {
-        console.log('error while sending data');
+        this.sendingData = false;
+        this.datafull = false;
+        this._notificationService.showNotification('top', 'right',
+          `Error al enviar información. Intenta nuevamente :)`);
       });
   }
 

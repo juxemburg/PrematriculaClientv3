@@ -74,6 +74,9 @@
                             <button class="btn btn-wd btn-danger" [@startAnimation]='in'
                             (click)="onMateriaUnselected(_selectedMaterias[key])">
                               {{_selectedMaterias[key].nombre}}
+                              <i class="material-icons">
+                                  close
+                              </i>
                             </button>
                           </div>
                         </div>
@@ -137,7 +140,7 @@
                             <i class="material-icons">assignment</i>
                           </div>
                           <div class="card-content">
-                            <h4 class="card-title">Tu Matrícula</h4>
+                            <h4 class="card-title-icon">Tu Matrícula</h4>
                             <app-loading *ngIf="sendingData">
                             </app-loading>
                             <div *ngIf="!sendingData">
@@ -145,7 +148,7 @@
                                 <table class="table">
                                   <thead class="text-primary">
                                     <tr>
-                                      <th>Semestre</th>
+                                      <th class="text-center">Semestre</th>
                                       <th class="text-center">Materia</th>
                                     </tr>
                                   </thead>
@@ -167,7 +170,7 @@
                 <div class="wizard-footer">
                   <div class="pull-right">
                     <input type="button" class="btn btn-next btn-fill btn-danger btn-wd" name="next" value="Siguiente"
-                    [disabled] ="!ValidMatricula()">
+                    (click)="Next()" [disabled] ="!ValidMatricula()">
                     <input type="submit" class="btn btn-finish btn-fill btn-danger btn-wd" name="finish" value="Terminar" style="display: none;"
                       (click)="SendMatricula()">
                   </div>

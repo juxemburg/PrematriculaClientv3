@@ -9,11 +9,17 @@
     color: $mdb-card-body-text;
     background: $mdb-card-body-background;
 
+    .card-title-icon {
+        position: relative;
+        top: -10px;
+        left: 10px;
+    }
+
     .card-height-indicator {
         margin-top: 100%;
     }
 
-    .card-header, .card-header-icon {
+    .card-header-icon {
         float: left;
 
         [data-background-color="blue"] {

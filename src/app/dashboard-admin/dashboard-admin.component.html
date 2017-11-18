@@ -1,18 +1,29 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-10 dol-md-offset-1">
+      <div class="col-xs-12 text-center">
+        <h2 class="title">Reporte de Prematricula</h2>
+      </div>
+      <div class="col-md-10 dol-md-offset-1" *ngFor="let rep of reporte.reporteMaterias">
         <div class="card container">
           <h3 class="card-title">
-            Reporte de Prematricula
+            Semestre {{rep.numSemestre}}
           </h3>
-          <h4 class="card-title">
-            Programa: Ingeniería de Sistemas
-          </h4>
-          <div class="card-content">
-            <p>
-              dashboard-admin works!
-            </p>
+          <div class="card-content table-responsive">
+            <table class="table">
+              <thead class="text-danger">
+                <tr>
+                  <th>Nombre Materia</th>
+                  <th>Cupos Solicitados</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let mat of rep.materias">
+                  <td>{{mat.nombreMateria}}</td>
+                  <td>{{mat.cantidadRegistrada}}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

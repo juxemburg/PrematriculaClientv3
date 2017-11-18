@@ -13,6 +13,18 @@
         margin-top: 100%;
     }
 
+    .card-header, .card-header-icon {
+        float: left;
+
+        [data-background-color="blue"] {
+            background: $light-blue-700;
+        }
+
+        [data-background-color="red"] {
+            background: $red-700;
+        }
+    }
+
     .title{
         margin-top: 0;
         margin-bottom: 5px;

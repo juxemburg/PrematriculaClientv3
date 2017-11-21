@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from 'app/account/services/login.service';
 import { Router } from '@angular/router';
 import { NotificationService } from 'app/shared/services/notification.service';
+import { UserService } from 'app/account/services/user.service';
+import { AdminService } from 'app/account/services/admin.service';
 
 
 declare const $: any;
@@ -21,9 +23,13 @@ export class LoginAdminComponent implements OnInit {
 
   constructor(private _loginService: LoginService,
     private _formBuilder: FormBuilder, private _router: Router,
-    private _notificationService: NotificationService) { }
+    private _notificationService: NotificationService,
+    private _usrService: UserService,
+    private _adminService: AdminService) { }
 
   ngOnInit() {
+    this._usrService.RemoveUser();
+    this._adminService.RemoveUser();
     $.material.init();
     this.model = new LoginModel('', '');
     this.loginForm = this._formBuilder.group({

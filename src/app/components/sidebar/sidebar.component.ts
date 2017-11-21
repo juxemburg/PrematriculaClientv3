@@ -48,7 +48,7 @@ export class SidebarComponent implements OnInit {
         }
     }
     private isUserAble(): boolean {
-        return typeof this._adminService.GetUser() === 'undefined';
+        return this._usrService.IsUserActive();
     }
     private loadAdminInfo(): void {
         this._admin = this._adminService.GetUser();

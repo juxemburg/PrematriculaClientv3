@@ -29,7 +29,7 @@ export class Prematricula {
 export class PrematriculaReporte {
     constructor(public reporteMaterias: ReporteGroup[],
         public nombrePrograma: string, public periodo: string,
-        public numEstudiante: number) {
+        public numEstudiantes: number) {
     }
 }
 export class MateriaReporte {
@@ -47,6 +47,6 @@ export class Estudiante {
 
 }
 export class Coordinador {
-    constructor(public id: string, public nombres: string,
+    constructor(public idCoordinador: string, public nombres: string,
         public apellidos: string, public idPrograma: string) { }
 }

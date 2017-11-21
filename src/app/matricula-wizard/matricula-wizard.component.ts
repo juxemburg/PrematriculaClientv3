@@ -155,7 +155,6 @@ export class MatriculaWizardComponent implements OnInit, AfterViewInit {
   }
 
   public Next(): void {
-    debugger;
     window.scrollTo(0, 0);
   }
 

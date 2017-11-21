@@ -13,7 +13,7 @@ export class UserService {
     this.loadUser();
   }
   private loadUser() {
-    if(this._cookieService.check('pm-user'))  {
+    if (this._cookieService.check('pm-user')) {
       UserService._user =
         JSON.parse(this._cookieService.get('pm-user')) as Estudiante;
     }

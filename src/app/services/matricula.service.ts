@@ -26,8 +26,7 @@ export class MatriculaService {
     idProg: string, anio: string, semestre: string):
     Observable<PrematriculaReporte> {
       return this._httpService
-      .Get<PrematriculaReporte>(`prematricula/report
-      /${usuarioDocente}/${idProg}/${anio}/${semestre}`);
+      .Get<PrematriculaReporte>(`prematricula/report/${usuarioDocente}/${idProg}/${anio}/${semestre}`);
   }
 
   public Get_Programa(id: string): Observable<Programa> {

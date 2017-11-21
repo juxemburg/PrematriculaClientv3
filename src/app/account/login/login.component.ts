@@ -6,6 +6,8 @@ import { LoginModel } from 'app/models/login.models';
 import { Router } from '@angular/router';
 import { LoginService } from 'app/account/services/login.service';
 import { NotificationService } from 'app/shared/services/notification.service';
+import { UserService } from 'app/account/services/user.service';
+import { AdminService } from 'app/account/services/admin.service';
 
 declare const $: any;
 
@@ -21,9 +23,13 @@ export class LoginComponent implements OnInit {
   public isLoading = false;
   constructor(private _loginService: LoginService,
     private _fb: FormBuilder, private _router: Router,
-    private _notificationService: NotificationService) { }
+    private _notificationService: NotificationService,
+    private _usrService: UserService,
+    private _adminService: AdminService) { }
   ngOnInit() {
     $.material.init();
+    this._usrService.RemoveUser();
+    this._adminService.RemoveUser();
     this._model = new LoginModel('', '');
     this._loginForm = this._fb.group({
       'user': [null, Validators.compose([Validators.required])],

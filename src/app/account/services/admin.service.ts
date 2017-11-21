@@ -12,19 +12,20 @@ export class AdminService {
     this.loadUser();
   }
   loadUser(): void {
-    if (this._cookieService.check('pm-user')) {
+    if (this._cookieService.check('pm-admin')) {
       AdminService._user =
-        JSON.parse(this._cookieService.get('pm-user')) as Coordinador;
+        JSON.parse(this._cookieService.get('pm-admin')) as Coordinador;
     }
   }
+  
 
-  private IsUserActive():boolean {
+  public IsUserActive():boolean {
     return AdminService._user !== null;
   }
 
   public SetUser(user: Coordinador): void {
     AdminService._user = user;
-    this._cookieService.set('pm-user', JSON.stringify(user));
+    this._cookieService.set('pm-admin', JSON.stringify(user));
   }
 
   public RemoveUser(): void {

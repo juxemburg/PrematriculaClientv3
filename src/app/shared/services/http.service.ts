@@ -6,8 +6,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class HttpService {
 
-  private _baseUrl = 'http://localhost:8080/unicauca-prematricula/api'; //Development
-  // private _baseUrl = '/unicauca-prematricula/api'; //Production
+  // private _baseUrl = 'http://localhost:8080/unicauca-prematricula/api'; //Development
+  private _baseUrl = '/unicauca-prematricula/api'; //Production
   // private _baseUrl = 'https://94953266-40c4-4521-a736-53ea63e12758.mock.pstmn.io/unicacua-prematricula/api'; //Client Development
   constructor(private _http: Http) { }
 
@@ -16,7 +16,6 @@ export class HttpService {
     return this._http.get(url)
       .map(res => res.json() as T);
   }
-
   public Post<T, U>(subUrl: string, data: U): Observable<T> {
     const url = this.getUrl(subUrl);
     return this._http.post(url, data)
@@ -25,5 +24,4 @@ export class HttpService {
   private getUrl(subUrl: string): string {
     return `${this._baseUrl}/${subUrl}`;
   }
-
 }
